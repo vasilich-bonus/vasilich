@@ -3,139 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ВАСИЛИЧ — Бонусы и Ссылки</title>
+    <title>ВАСИЛИЧ - Бонусы</title>
     <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --border-color: #30363d;
+            --text-main: #ffffff;
+            --text-muted: #8b949e;
+            --blue-btn: #1f3a5f;
+            --blue-btn-text: #58a6ff;
+            --orange-glow: rgba(255, 165, 0, 0.4);
+            --orange-border: #ffa500;
+            --red-glow: rgba(255, 71, 87, 0.4);
+            --red-border: #ff4757;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #0f172a;
-            color: white;
             margin: 0;
+            padding: 20px 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            padding: 0 15px;
+            box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            padding: 20px;
+            gap: 15px;
         }
+
         .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 5px;
         }
         .avatar {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            border: 3px solid #3b82f6;
             object-fit: cover;
+            border: 2px solid var(--border-color);
             margin-bottom: 10px;
         }
-        h1 { margin: 10px 0; font-size: 24px; }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
         .subtitle-badge {
-            background: #1e293b;
+            display: inline-block;
+            background-color: var(--card-bg);
+            color: var(--text-muted);
             padding: 5px 15px;
             border-radius: 20px;
-            font-size: 14px;
-            border: 1px solid #334155;
+            font-size: 12px;
+            margin-top: 8px;
+            border: 1px solid var(--border-color);
         }
-        .tg-button {
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 15px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 600;
+            font-size: 14px;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+            box-sizing: border-box;
+            transition: opacity 0.2s;
+        }
+        
+        .btn-tg {
+            background-color: var(--blue-btn);
+            color: var(--blue-btn-text);
+            border: 1px solid #2a4b7c;
+        }
+        .btn-download {
+            background-color: #3b82f6;
+            color: white;
+            margin-top: 15px;
+        }
+        .btn-orange {
+            background-color: #f59e0b;
+            color: #000;
+        }
+        .btn-red {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        .warning-text {
+            color: #d1d5db;
+            font-size: 12px;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        .copy-group {
+            display: flex;
+            background-color: #0d1117;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .copy-group input {
+            flex-grow: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            font-size: 14px;
+            outline: none;
+        }
+        .btn-copy {
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            padding: 0 15px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .service-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background-color: #2d333b;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #0088cc;
-            color: white;
-            text-decoration: none;
-            padding: 15px 20px;
-            border-radius: 12px;
-            width: 100%;
-            max-width: 350px;
-            margin-bottom: 25px;
-            font-weight: bold;
-            transition: transform 0.2s;
+            font-size: 20px;
         }
-        .tg-button img { width: 24px; margin-right: 10px; }
-        .card {
-            background: #1e293b;
-            border-radius: 15px;
-            width: 100%;
-            max-width: 350px;
-            margin-bottom: 20px;
-            overflow: hidden;
-            border: 1px solid #334155;
-        }
-        .card-content { padding: 20px; text-align: center; }
-        .brand-name { font-size: 22px; font-weight: bold; color: #3b82f6; margin-bottom: 5px; }
-        .bonus-text { font-size: 14px; color: #94a3b8; margin-bottom: 15px; }
-        .promo-box {
-            background: #0f172a;
-            padding: 10px;
+        .service-title { margin: 0; font-size: 16px; }
+        .service-subtitle { margin: 0; font-size: 12px; color: var(--text-muted); }
+
+        .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+        .tag { background-color: #21262d; padding: 4px 10px; border-radius: 6px; font-size: 11px; color: #c9d1d9; }
+
+        .offer-card { position: relative; }
+        .offer-card.orange { border-color: var(--orange-border); box-shadow: 0 0 15px var(--orange-glow); }
+        .offer-card.red { border-color: var(--red-border); box-shadow: 0 0 15px var(--red-glow); }
+        
+        .offer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .offer-title { font-size: 20px; font-weight: 800; margin: 0; }
+        .offer-card.orange .offer-title { color: #f59e0b; }
+        .offer-card.red .offer-title { color: #ef4444; }
+        
+        .badge { background-color: #000; font-size: 10px; padding: 4px 8px; border-radius: 6px; font-weight: bold; }
+        .offer-card.orange .badge { border: 1px solid #f59e0b; color: #f59e0b; }
+        .offer-card.red .badge { border: 1px solid #ef4444; color: #ef4444; }
+
+        .offer-main-text { font-size: 18px; font-weight: bold; margin-bottom: 15px; }
+        .offer-main-text span { color: var(--text-muted); font-size: 14px; font-weight: normal; }
+
+        .promo-code {
+            background-color: #0d1117;
+            padding: 8px 12px;
             border-radius: 8px;
+            font-size: 12px;
+            color: var(--text-muted);
             margin-bottom: 15px;
-            border: 1px dashed #3b82f6;
-            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: monospace;
         }
-        .promo-box strong { color: #60a5fa; font-size: 18px; }
-        .btn {
-            display: block;
-            background: #3b82f6;
-            color: white;
-            text-decoration: none;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: background 0.3s;
+
+        .footer {
+            text-align: center;
+            font-size: 10px;
+            color: #484f58;
+            margin-top: 10px;
         }
-        .btn:hover { background: #2563eb; }
-        .footer-info { margin-top: 20px; color: #64748b; font-size: 13px; }
     </style>
 </head>
 <body>
 
+<div class="container">
+    
     <header class="header">
         <img src="vasilich.jpg" alt="Avatar" class="avatar">
         <h1>ВАСИЛИЧ</h1>
         <div class="subtitle-badge">Внизу страницы БОНУС 👇🎁</div>
     </header>
 
-    <a href="https://t.me/vasilich_bonus_bot" class="tg-button">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="TG">
-        Перейти в telegram-бот
-    </a>
+    <a href="https://t.me/vasilich_bonus_bot" class="btn btn-tg">📢 ПЕРЕЙТИ В TELEGRAM-КАНАЛ</a>
 
-    <!-- Секция 1WIN -->
     <div class="card">
-        <div class="card-content">
-            <div class="brand-name">1WIN</div>
-            <div class="bonus-text">БОНУС 500% НА ДЕПОЗИТ</div>
-            <div class="promo-box">
-                ПРОМОКОД: <strong id="promo1">VASILICHBONUS</strong>
-            </div>
-            <a href="https://lkga.cc/3603f5" class="btn">ЗАБРАТЬ БОНУС</a>
+        <div class="warning-text">⚠️ Если Telegram не открывается — используй VPN или найди канал вручную:</div>
+        <div class="copy-group">
+            <input type="text" value="@vasilich_bonus_bot" readonly id="tg-username">
+            <button class="btn-copy" onclick="copyText()">📋 КОПИРОВАТЬ</button>
         </div>
     </div>
 
-    <!-- Секция JOYCASINO -->
     <div class="card">
-        <div class="card-content">
-            <div class="brand-name">JOYCASINO</div>
-            <div class="bonus-text">200 БЕСПЛАТНЫХ СПИНОВ</div>
-            <div class="promo-box">
-                ПРОМОКОД: <strong id="promo2">VASILICH777</strong>
+        <div class="service-header">
+            <div class="service-icon">🌐</div>
+            <div>
+                <h3 class="service-title">Amnezia VPN</h3>
+                <p class="service-subtitle">Стабильный доступ 24/7</p>
             </div>
-            <a href="https://52758.call2me.pro/ru/registration?partner=p52758p3328437p54ff" class="btn">ЗАБРАТЬ БОНУС</a>
         </div>
+        <div class="tags">
+            <span class="tag">🚀 Быстрая скорость</span>
+            <span class="tag">🔓 Без ограничений</span>
+        </div>
+        <a href="#" class="btn btn-download">🔒 СКАЧАТЬ Amnezia VPN</a>
     </div>
 
-    <div class="footer-info">
-        Связь: @vasilich_bonus_bot
+    <div class="card offer-card orange">
+        <div class="offer-header">
+            <h2 class="offer-title">1WIN</h2>
+            <span class="badge">🔥 ТОП ВЫБОР</span>
+        </div>
+        <div class="offer-main-text">500% + 70FS <span>К ПЕРВЫМ ДЕПОЗИТАМ</span></div>
+        <div class="promo-code">🔒 ПРОМОКОД: <strong>VASILICH777</strong></div>
+        <a href="https://lkga.cc/3603f5" class="btn btn-orange">🎰 ЗАБРАТЬ БОНУС</a>
     </div>
 
-    <script>
-        function copyPromo(id) {
-            const text = document.getElementById(id).innerText;
-            navigator.clipboard.writeText(text);
-            alert('Промокод скопирован: ' + text);
-        }
-        document.getElementById('promo1').parentElement.onclick = () => copyPromo('promo1');
-        document.getElementById('promo2').parentElement.onclick = () => copyPromo('promo2');
-    </script>
+    <div class="card offer-card red">
+        <div class="offer-header">
+            <h2 class="offer-title">JOYCASINO</h2>
+            <span class="badge">🎁 VIP ПАКЕТ</span>
+        </div>
+        <div class="offer-main-text">200% + 235FS <span>НА ПЕРВЫЙ ДЕПОЗИТ</span></div>
+        <div class="promo-code">🔒 ПРОМОКОД: <strong>VASILICH777</strong></div>
+        <a href="https://52758.call2me.pro/ru/registration?partner=p52758p3328437p54ff" class="btn btn-red">🎰 ЗАБРАТЬ БОНУС</a>
+    </div>
+
+    <div class="footer">
+        ВАСИЛИЧ • Бонусы доступны после регистрации • Играйте ответственно
+    </div>
+
+</div>
+
+<script>
+    function copyText() {
+        var copyText = document.getElementById("tg-username");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); 
+        navigator.clipboard.writeText(copyText.value);
+        alert("Никнейм скопирован!");
+    }
+</script>
 
 </body>
 </html>
